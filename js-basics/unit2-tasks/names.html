@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let name1 = prompt("Whats your name?");
+        let name2 = prompt("Whats your name?");
+        let name3 = prompt("Whats your name?");
+
+        let names = [name1, name2, name3];
+
+        const sentence = document.write(`Hello ${names[0]}, there are ${names[0].length} letters in your name <br>`);
+        const sentence2 = document.write(`Hello ${names[1]}, there are ${names[1].length} letters in your name <br>`);
+        const sentence3 = document.write(`Hello ${names[2]}, there are ${names[2].length} letters in your name <br>`);
+
+        let alphabeticalOrder = names.sort(); 
+        
+
+        let message = "Here is the list of names in alphabetical order: \n";
+
+        for(let i = 0; i < alphabeticalOrder.length; i++ ){
+            message += alphabeticalOrder[i] + "\n"
+        }
+        alert(message);
+
+        let reverseOrder = names.reverse();
+
+        let message1 = "Here is the list of names in reverse alphabetical order \n"
+
+            for(let i = 0; i < reverseOrder.length; i++ ){
+            message1 += reverseOrder[i] + "\n"
+        }
+        alert(message1);
+        
+    </script>
+</body>
+</html>
