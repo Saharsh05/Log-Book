@@ -46,7 +46,7 @@
         console.log(`Hello ${name} ${lastName}`);
     }
 
-    // Calculating a valud
+    // Calculating a value
     function square(number) {
         return number * number;
     } 

@@ -1,15 +1,17 @@
 class Task{
-    constructor(id, description)
+    constructor(id, description, priority = "Normal", dueDate = "No due date")
     {
         this.id = id; 
         this.description = description;
         this.completed = false; 
+        this.priority = priority
+        this.dueDate = dueDate
     }
     
     format(){
-        const status = this.completed ? "Yes" : "No";
+        const status = this.completed ? "✓ Completed" : "✗ Incomplete";
 
-        return `${status} ${this.id} ${this.description}`
+        return `${status} ${this.id} Description:${this.description} Priority: ${this.priority} Due: ${this.dueDate}`
     }
 }
 
@@ -21,9 +23,9 @@ class TaskManager
         this.nextId = 1;
     }
 
-    addTask(description)
+    addTask(description, priority = "Normal", dueDate = "no due date")
     {
-        const newTask = new Task(this.nextId, description);
+        const newTask = new Task(this.nextId, description, priority, dueDate);
 
         this.tasks.push(newTask);
 
@@ -111,28 +113,16 @@ class TaskManager
 
 const taskManager = new TaskManager();
 
-taskManager.addTask("Buy groceries")
-taskManager.addTask("Read a Book")
-taskManager.addTask("Write CSS")
+// Add tasks with priority and due dates
+taskManager.addTask("Buy groceries", "High", "2025-08-05");
+taskManager.addTask("Read a Book", "Low", "2025-08-10");
+taskManager.addTask("Write CSS", "Medium", "2025-08-08");
 
-taskManager.completeTask(1)
+taskManager.completeTask(1);
 
-console.log("All tasks")
+console.log("\nAll tasks:");
 taskManager.listTasks();
 
-function isCompleted(task)
-{
-    return task.completed === true;
-}
-
-
-
-const completedTasks = taskManager.filterTasks(isCompleted);
-
-
-console.log("Completed Tasks")
-completedTasks.forEach(function(task)
-{
-    console.log(task.format())
-})
-
+console.log("\nCompleted Tasks:");
+const completedTasks = taskManager.filterTasks((task) => task.completed);
+completedTasks.forEach((task) => console.log(task.format()));
